@@ -165,6 +165,24 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* Add this to your existing CSS */
+        .main-header {
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: #00ff9d !important;
+        }
+
+        .nav-link.active i {
+            color: #00ff9d !important;
+        }
+
+        /* Update the existing active link style */
+        .main-nav a.active::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="font-['Rajdhani'] bg-[#0d0221] text-[#f4f4f4] bg-grid-pattern min-h-screen overflow-x-hidden">
@@ -1027,6 +1045,132 @@
     </footer>
 
     <script>
+        // Pesan Selamat Datang
+        const welcomeGreeting = document.getElementById('welcome-greeting');
+        const userName = prompt("Halo! Silakan masukkan nama Anda:", "") || "";
+        if (userName) {
+            welcomeGreeting.textContent = `Hi ${userName}, Welcome To Website`;
+        }
+        
+        // Add this script to your existing JavaScript section
+        // Function to update active navigation link
+        function updateActiveNavLink() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.page-section');
+            let currentSection = '';
+            
+            // Get current section in view
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 100) && window.scrollY < (sectionTop + sectionHeight - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            // Update active link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                    
+                    // Change header color based on section
+                    const header = document.querySelector('.main-header');
+                    switch(currentSection) {
+                        case 'home':
+                            header.style.borderBottomColor = '#05d9e8';
+                            break;
+                        case 'profile':
+                            header.style.borderBottomColor = '#00ff9d';
+                            break;
+                        case 'portfolio':
+                            header.style.borderBottomColor = '#ff2a6d';
+                            break;
+                        case 'services':
+                            header.style.borderBottomColor = '#d300c5';
+                            break;
+                        case 'team':
+                            header.style.borderBottomColor = '#05d9e8';
+                            break;
+                        case 'message-us':
+                            header.style.borderBottomColor = '#00ff9d';
+                            break;
+                        default:
+                            header.style.borderBottomColor = '#05d9e8';
+                    }
+                }
+            });
+        }
+
+        // Add click event listeners to nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Prevent default if it's an anchor link
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // Scroll to section
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active link immediately
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        
+                        // Change header color based on clicked section
+                        const sectionId = targetId.substring(1);
+                        const header = document.querySelector('.main-header');
+                        switch(sectionId) {
+                            case 'home':
+                                header.style.borderBottomColor = '#05d9e8';
+                                break;
+                            case 'profile':
+                                header.style.borderBottomColor = '#00ff9d';
+                                break;
+                            case 'portfolio':
+                                header.style.borderBottomColor = '#ff2a6d';
+                                break;
+                            case 'services':
+                                header.style.borderBottomColor = '#d300c5';
+                                break;
+                            case 'team':
+                                header.style.borderBottomColor = '#05d9e8';
+                                break;
+                            case 'message-us':
+                                header.style.borderBottomColor = '#00ff9d';
+                                break;
+                            default:
+                                header.style.borderBottomColor = '#05d9e8';
+                        }
+                    }
+                }
+                
+                // Close mobile menu if open
+                const hamburgerBtn = document.getElementById('hamburger-btn');
+                const mainNav = document.getElementById('main-nav');
+                if (mainNav.classList.contains('active')) {
+                    hamburgerBtn.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    mainNav.style.transform = 'translateY(-100%)';
+                }
+            });
+        });
+
+        // Update on scroll
+        window.addEventListener('scroll', updateActiveNavLink);
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', updateActiveNavLink);
+
         // Loading screen
         window.addEventListener('load', function() {
             const loadingScreen = document.getElementById('loading-screen');
