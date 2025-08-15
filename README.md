@@ -37,7 +37,7 @@ Atau langsung akses melalui GitHub Pages:
 
 ## AI Support Explanation
 Dalam pengembangan website ini, saya menggunakan bantuan AI untuk:
-1. **Generasi Kode**: Membantu menulis beberapa bagian kode JavaScript untuk fitur multi-bahasa dan animasi.
+1. **Generasi Kode**: Membantu menulis beberapa bagian kode JavaScript untuk fitur multi-bahasa dan animasi menggunakan https://replicate.com/ibm-granite/granite-3.3-8b-instruct.
 2. **Debugging**: Memeriksa dan memperbaiki error dalam kode.
 3. **Optimasi**: Memberikan saran untuk meningkatkan performa website.
 4. **Desain**: Memberikan ide untuk tata letak dan palet warna.
