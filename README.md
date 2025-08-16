@@ -1,4 +1,4 @@
-# Hacktiv8 x IBM Website
+# Profile Company Landing Page 
 
 ## Description
 Website ini adalah proyek capstone yang dibuat sebagai bagian dari program pelatihan Hacktiv8 yang bermitra dengan IBM. Website ini menampilkan profil perusahaan, layanan pendidikan digital, portofolio proyek, tim pengajar, dan formulir kontak. Desainnya mengusung tema futuristik dengan animasi dan efek visual yang menarik.
