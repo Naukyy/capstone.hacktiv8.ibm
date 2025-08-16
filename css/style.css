@@ -1,0 +1,313 @@
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 1s ease-out;
+}
+
+.bg-grid-pattern {
+    background: 
+        linear-gradient(rgba(5, 217, 232, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(5, 217, 232, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(13, 2, 33, 0.9) 0%,
+        rgba(255, 42, 109, 0.3) 50%,
+        rgba(13, 2, 33, 0.9) 100%
+    );
+    z-index: 1;
+}
+
+.portfolio-item-content {
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-item-content {
+    transform: translateY(0);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00ff9d;
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.profile-card ul li::before {
+    content: '▹';
+    color: #05d9e8;
+    margin-right: 10px;
+}
+
+/* New animations */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0d0221;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #05d9e8;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00ff9d;
+}
+
+/* Tooltip styling */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #05d9e8;
+    color: #0d0221;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Loading spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(5, 217, 232, 0.3);
+    border-radius: 50%;
+    border-top-color: #05d9e8;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Add this to your existing CSS */
+.main-header {
+    transition: border-bottom-color 0.3s ease;
+}
+
+.nav-link.active {
+    color: #00ff9d !important;
+}
+
+.nav-link.active i {
+    color: #00ff9d !important;
+}
+
+/* Update the existing active link style */
+.main-nav a.active::after {
+    width: 100%;
+}
+
+/* Language switcher */
+.language-switcher {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.language-btn {
+    background: #05d9e8;
+    color: #0d0221;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(5, 217, 232, 0.7);
+    transition: all 0.3s ease;
+}
+
+.language-btn:hover {
+    background: #00ff9d;
+    transform: scale(1.1);
+}
+
+.language-options {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    background: rgba(5, 1, 13, 0.9);
+    border: 1px solid #05d9e8;
+    border-radius: 8px;
+    padding: 10px;
+    display: none;
+}
+
+.language-options.show {
+    display: block;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.language-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #f4f4f4;
+    border-radius: 4px;
+    margin: 5px 0;
+    transition: all 0.2s ease;
+}
+
+.language-option:hover {
+    background: #05d9e8;
+    color: #0d0221;
+}
+
+.language-option.active {
+    background: #00ff9d;
+    color: #0d0221;
+    font-weight: bold;
+}
+
+/* Welcome modal */
+.welcome-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 1, 13, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.welcome-content {
+    background: #0d0221;
+    border: 2px solid #05d9e8;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(5, 217, 232, 0.5);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.welcome-content h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ff9d;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.welcome-content p {
+    color: #b8b8b8;
+    margin-bottom: 30px;
+}
+
+.welcome-content input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #d300c5;
+    border-radius: 5px;
+    color: #f4f4f4;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.welcome-content input:focus {
+    outline: none;
+    border-color: #00ff9d;
+    box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+}
+
+.welcome-content button {
+    background: #ff2a6d;
+    color: #0d0221;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+}
+
+.welcome-content button:hover {
+    background: #00ff9d;
+    transform: scale(1.05);
+}
